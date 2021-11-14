@@ -19,4 +19,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/', [App\Http\Controllers\LandingController::class, 'landing'])->name('landing');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
