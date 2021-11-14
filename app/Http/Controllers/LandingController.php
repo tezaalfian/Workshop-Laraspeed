@@ -10,6 +10,32 @@ use App\Models\Product;
 
 class LandingController extends Controller
 {
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        try {
+            $this->validate($request, [
+                'email' => 'required|email',
+            ],[
+                'title.required' => 'Email is required',
+                'title.email' => 'Email is not valid',
+            ]);
+
+            $data = Subscription::create([
+                'email' => $request->email
+            ]);
+
+            return redirect()->back()->with('message', 'Subscribe succeed '.$request->email.'!');
+        } catch (Exception $e) {
+            return redirect()->back()->with('erro_login', 'Subscribe failed!');
+        }
+    }
+
      /**
      * Remove the specified resource from storage.
      *

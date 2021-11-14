@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Models\Category;
+use App\Models\Subscription;
 use Illuminate\Support\Str;
+use App\Jobs\SubscribeJob;
 
 class CategoryController extends Controller
 {
@@ -70,6 +72,14 @@ class CategoryController extends Controller
             'title' => $request->title,
             'slug' => Str::slug($request->title,'-'),
         ]);
+
+        // disini ada trigger queue
+        // 1. mendapatkan list email subscriber
+        $subscribes = Subscription::all();
+        foreach ($subscribes as $key => $value) {
+            # code...
+            $this->dispatch(new SubscribeJob($request->title,'Sahabatku',$value->email,'Ada yg baru loh!'));
+        }
 
         return response()->json([
             'message' => 'success',

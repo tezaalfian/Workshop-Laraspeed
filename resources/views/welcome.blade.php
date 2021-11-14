@@ -17,7 +17,7 @@
                 @endif
                 <h1 class="hero-title h2-mobile mt-0 is-revealing">{{ $config->slogan }}</h1>
                 <p class="hero-paragraph is-revealing">{{ $config->welcome_text }}.</p>
-                {{-- <form action="{{ route('submit.subscribe') }}" method="POST"> --}}
+                <form action="{{ route('submit.subscribe') }}" method="POST">
                 @csrf
                     <div class="form-group">
                         <div class="hero-cta container mb-12">
