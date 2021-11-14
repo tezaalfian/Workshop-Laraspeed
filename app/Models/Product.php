@@ -10,4 +10,9 @@ class Product extends Model
 {
     use HasFactory,SoftDeletes;
     public $guarded = [];
+
+    public function details()
+    {
+        return $this->hasMany(ProductDetail::class);
+    }
 }

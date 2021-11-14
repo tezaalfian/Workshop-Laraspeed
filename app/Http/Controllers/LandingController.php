@@ -19,9 +19,9 @@ class LandingController extends Controller
     public function landing()
     {
         $blogs = Blog::paginate(10);
-        // $products = Product::with(['details'])->get();
+        $products = Product::with(['details'])->get();
         $config = Config::first();
 
-        return view('welcome',compact(['blogs','config']));
+        return view('welcome',compact(['blogs','config','products']));
     }
 }

@@ -1,1 +1,1 @@
-<script src="{{ asset('assets/evelyn/dist/js/main.min.js') }}"></script>
+<script src="{{ asset('assets/landing/dist/js/main.min.js') }}"></script>
