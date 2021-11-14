@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +27,7 @@ Route::post('/subscribe-submit', [App\Http\Controllers\LandingController::class,
 Route::get('/blog/{slug}', [App\Http\Controllers\LandingController::class, 'detail_blog'])->name('blog.detail');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('categories', CategoryController::class)->except(['update']);
+
+Route::post('/category-update/{id}', [CategoryController::class, 'update'])->name('categories.update');

@@ -41,6 +41,6 @@
 <!-- REQUIRED SCRIPTS -->
 
 @include('includes.dashboard.script')
-
+@stack('scripts')
 </body>
 </html>
