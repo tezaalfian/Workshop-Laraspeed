@@ -19,3 +19,10 @@
 <script src="{{ asset('assets/dashboard/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('assets/dashboard/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('assets/dashboard/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+<!-- SweetAlert2 -->
+<script src="{{ asset('assets/dashboard/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+<!-- Toastr -->
+<script src="{{ asset('assets/dashboard/plugins/toastr/toastr.min.js') }}"></script>
+
+<script src="{{ asset('assets/custom.js') }}"></script>

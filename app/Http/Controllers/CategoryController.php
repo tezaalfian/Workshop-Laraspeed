@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 use App\Models\Category;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -60,7 +61,21 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        // insert into category values ()
+        $data = Category::create([
+            'title' => $request->title,
+            'slug' => Str::slug($request->title,'-'),
+        ]);
+
+        return response()->json([
+            'message' => 'success',
+            'code' => 201,
+            'data' =>$data,
+        ], 201);
     }
 
     /**
@@ -69,9 +84,17 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
-        //
+        if($request->ajax()){
+            $data = Category::find($id);
+
+            return response()->json([
+                'message' => 'success',
+                'code' => 200,
+                'data' =>$data,
+            ], 200);
+        }
     }
 
     /**
@@ -94,7 +117,24 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+        ]);
+
+        $data = Category::find($id);
+
+        if($data){
+            $data->update([
+                'title' => $request->title,
+                'slug' => Str::slug($request->title,'-'),
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'success',
+            'code' => 201,
+            'data' =>$data,
+        ], 201);
     }
 
     /**
@@ -103,8 +143,25 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        if($request->ajax()){
+            $data = Category::find($id);
+            
+            if($data){
+                $data->delete();
+            }else{
+                return response()->json([
+                    'message' => 'failed',
+                    'code' => 404,
+                ], 404);
+            }
+
+            return response()->json([
+                'message' => 'success',
+                'code' => 202,
+                'data' =>$data,
+            ], 202);
+        }
     }
 }

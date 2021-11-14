@@ -14,7 +14,7 @@
             </button>
           </div>
           <div class="modal-body">
-            {{-- @include('pages.categories._form') --}}
+            @include('pages.categories._form')
           </div>
           <div class="modal-footer justify-content-between">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -68,7 +68,7 @@
         $(document).ready(function() {
 
             $.fn.dataTable.ext.buttons.addData = {
-                text: 'New Data',
+                text: 'Data baru',
                 action: function ( e, dt, node, config ) {
                   addCategories();
                 }

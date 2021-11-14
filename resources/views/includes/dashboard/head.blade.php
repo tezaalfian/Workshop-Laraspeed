@@ -1,5 +1,6 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <title>{{ env('APP_NAME') }}r</title>
 
 <!-- Google Font: Source Sans Pro -->
@@ -13,3 +14,8 @@
  <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
  <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
  <link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
+
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css') }}">
+<!-- Toastr -->
+<link rel="stylesheet" href="{{ asset('assets/dashboard/plugins/toastr/toastr.min.css') }}">
